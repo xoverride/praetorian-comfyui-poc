@@ -1,0 +1,10 @@
+[project]
+name = "praetorian-comfyui-poc"
+description = "Security assessment POC"
+version = "1.0.0"
+license = "MIT"
+
+[tool.comfy]
+PublisherId = "praetorian"
+DisplayName = "Praetorian POC"
+Icon = ""
